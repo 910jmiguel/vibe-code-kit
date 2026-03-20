@@ -7,8 +7,11 @@ You're helping me break down a project into a concrete, ordered checklist of tas
 1. Do you have a PRD or requirements doc? If so, paste it here (or the key sections).
 2. If no PRD — what are you building? Describe the scope and features.
 3. Any tasks already completed? Tell me what's done so I can mark them off.
+4. **Optional:** If you don't have a PRD yet, I can run the **PRD phase** first (which can also generate a plan if needed). Want me to do that? (If you already know the scope, skip this.)
 
 **Wait for my answers before continuing.**
+
+> **Note:** If I say yes to running the PRD phase first, use the PRD prompt (`prompts/02-prd.md`) to generate a PRD, save it to `docs/prd.md`, and then continue with the checklist using that PRD as the source.
 
 ---
 
@@ -55,5 +58,6 @@ _(continue for all phases)_
 
 **After generating the checklist:**
 - Tell me the total task count and which phase to start with
+- **Always generate a `docs/checklist.md` file** containing the full checklist output. Create the `docs/` directory if it doesn't exist.
 - Suggest running `/implement` or using the implement prompt to start building
 - Ask if any tasks need to be added, removed, or reordered

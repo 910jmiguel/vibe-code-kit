@@ -62,6 +62,8 @@ One paragraph. What we're building, for whom, and why.
 ### Suggested Next Step
 Specific next action — e.g., "Run `/prd` to create detailed requirements" or "Start Phase 1."
 
-## Step 4: Save (if user confirms)
+## Step 4: Save the Plan
 
-Offer to save the plan to `docs/plan.md` (create the `docs/` directory if it doesn't exist). Ask before saving.
+After the user reviews and approves the plan, **always generate a `docs/plan.md` file** containing the full plan output. Create the `docs/` directory if it doesn't exist. Do not ask whether to save — always save it. This file is used by later phases (PRD, Checklist, Implement) to stay aligned.
+
+Confirm the file was saved and suggest the next step: "Run `/prd` to turn this plan into detailed requirements."

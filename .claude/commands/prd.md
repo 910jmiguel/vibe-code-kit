@@ -9,14 +9,18 @@ Check if `CLAUDE.md` exists in the project root.
 **If CLAUDE.md exists:**
 - Read it for project context, tech stack, and conventions
 - Check if `docs/plan.md` exists — if so, read it and use it as the foundation for the PRD
-- Skip onboarding. Ask: "What should this PRD cover? $ARGUMENTS"
+- If `docs/plan.md` does NOT exist, ask: "No plan found. Want me to run the Plan phase first to generate `docs/plan.md`? (Optional — I can write the PRD without it if you already know the scope.)"
+- If plan exists or user declines, ask: "What should this PRD cover? $ARGUMENTS"
 
 **If CLAUDE.md does not exist:**
 - Ask:
   1. What's the project? One-liner description.
   2. What's the tech stack?
   3. Do you have an existing plan or notes? Paste key points if so.
+  4. Optional: Want me to run the Plan phase first?
 - Wait for answers.
+
+**If the user wants the Plan phase first**, run the full Plan workflow (Step 1–4 from `/plan`), save `docs/plan.md`, then continue with the PRD using that plan as the foundation.
 
 **If `$ARGUMENTS` is provided**, use it as the PRD scope. Reference the plan if one exists in `docs/plan.md`.
 
@@ -68,5 +72,5 @@ Map features to implementation phases.
 
 - Flag anything you assumed or guessed
 - Ask the user to review each section
-- Offer to save to `docs/prd.md`
-- Suggest next step: "Run `/checklist` to break this into tasks"
+- **Always generate a `docs/prd.md` file** containing the full PRD output. Create the `docs/` directory if it doesn't exist. Do not ask whether to save — always save it.
+- Confirm the file was saved and suggest next step: "Run `/checklist` to break this into tasks"

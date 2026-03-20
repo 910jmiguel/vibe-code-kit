@@ -10,14 +10,18 @@ Check if `CLAUDE.md` exists in the project root.
 - Read it for project context
 - Check for `docs/prd.md` — if it exists, read it and use it as the source for tasks
 - Check for `docs/plan.md` — use for phase structure if PRD doesn't exist
-- Ask: "Ready to generate a checklist from your PRD? Anything to add or change first? $ARGUMENTS"
+- If neither `docs/prd.md` nor `docs/plan.md` exist, ask: "No PRD or plan found. Want me to run the PRD phase first to generate `docs/prd.md`? (Optional — I can build a checklist from a description if you already know the scope.)"
+- If docs exist or user declines, ask: "Ready to generate a checklist from your PRD? Anything to add or change first? $ARGUMENTS"
 
 **If CLAUDE.md does not exist:**
 - Ask:
   1. Do you have a PRD or requirements doc? Paste it or the key sections.
   2. If no PRD — describe what you're building and the key features.
   3. Any tasks already completed?
+  4. Optional: Want me to run the PRD phase first? (This can also generate a plan if needed.)
 - Wait for answers.
+
+**If the user wants the PRD phase first**, run the full PRD workflow (which may also run Plan if needed), save `docs/prd.md`, then continue with the checklist using that PRD as the source.
 
 **If `$ARGUMENTS` is provided**, use it to filter or focus the checklist (e.g., "Phase 1 only" or "just the API tasks").
 
@@ -58,6 +62,6 @@ _Goal: [What's true when this phase is done]_
 ## Step 3: Review & Save
 
 - Report total task count and recommended starting phase
-- Offer to save to `docs/checklist.md`
-- Suggest next step: "Run `/implement` to start building, or `/implement Phase 1` to start with the first phase"
+- **Always generate a `docs/checklist.md` file** containing the full checklist output. Create the `docs/` directory if it doesn't exist. Do not ask whether to save — always save it.
+- Confirm the file was saved and suggest next step: "Run `/implement` to start building, or `/implement Phase 1` to start with the first phase"
 - Ask if tasks need to be added, removed, or reordered

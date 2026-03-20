@@ -52,3 +52,9 @@ Break the work into 3-6 phases. For each phase:
 
 ### Suggested Next Step
 Tell me exactly what to do next. Be specific — "Run `/prd` to create a detailed requirements doc" or "Start with Phase 1: set up the project skeleton."
+
+---
+
+## Save the Plan
+
+After I've reviewed and approved the plan, **always generate a `docs/plan.md` file** containing the full plan output. Create the `docs/` directory if it doesn't exist. This file is used by later phases (PRD, Checklist, Implement) to stay aligned with the plan.

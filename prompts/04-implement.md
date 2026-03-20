@@ -10,8 +10,11 @@ You're helping me build. Time to write code.
    - **Step-by-step** (default): One task at a time, check in after each
    - **Full build**: Do everything in the current phase, check in at the end
    - **Plan only**: Show me what you'd do but don't write code yet
+4. **Optional:** If you don't have a checklist yet, I can run the **Checklist phase** first (which can also generate a PRD and plan if needed). Want me to do that? (If you already know what to build, skip this.)
 
 **Wait for my answers before continuing.**
+
+> **Note:** If I say yes to running the Checklist phase first, use the checklist prompt (`prompts/03-checklist.md`) to generate a checklist, save it to `docs/checklist.md`, and then continue with implementation using that checklist as the guide.
 
 ---
 

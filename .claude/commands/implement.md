@@ -10,6 +10,7 @@ Check if `CLAUDE.md` exists in the project root.
 - Read it for project context, conventions, and key commands
 - Check for `docs/checklist.md` — if it exists, read it to know what tasks are pending
 - Check for `docs/prd.md` — reference for requirements and acceptance criteria
+- If neither `docs/checklist.md` nor `docs/prd.md` exist, ask: "No checklist or PRD found. Want me to run the Checklist phase first to generate `docs/checklist.md`? (Optional — I can implement from a description if you already know what to build.)"
 - Scan the project structure to understand existing code
 
 **If CLAUDE.md does not exist:**
@@ -17,7 +18,10 @@ Check if `CLAUDE.md` exists in the project root.
   1. What are you implementing?
   2. What's the tech stack?
   3. Do you have a checklist or requirements? Paste the relevant section.
+  4. Optional: Want me to run the Checklist phase first? (This can also generate a PRD and plan if needed.)
 - Wait for answers.
+
+**If the user wants the Checklist phase first**, run the full Checklist workflow (which may also run PRD and Plan if needed), save `docs/checklist.md`, then continue with implementation using that checklist as the guide.
 
 **If `$ARGUMENTS` is provided**, interpret it as the implementation target:
 - A task description: "add the login form"

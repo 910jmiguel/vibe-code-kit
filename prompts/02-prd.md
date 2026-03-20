@@ -7,8 +7,11 @@ You're helping me write a Product Requirements Document. Before we dive in, I ne
 1. What's the project? One-liner description.
 2. What's the tech stack? (Language, framework, database, hosting)
 3. Do you have an existing plan or notes? If so, paste the key points here. If not, just describe what you want to build.
+4. **Optional:** If you don't have a plan yet, I can run the **Plan phase** first to generate one before writing the PRD. Want me to do that? (If you already know what you're building, skip this — it's not required.)
 
 **Wait for my answers before continuing.**
+
+> **Note:** If I say yes to running the Plan phase first, use the plan prompt (`prompts/01-plan.md`) to generate a plan, save it to `docs/plan.md`, and then continue with the PRD using that plan as the foundation.
 
 ---
 
@@ -64,4 +67,5 @@ Map features to implementation phases. Reference the plan if one exists.
 **After generating the PRD:**
 - Ask me to review each section
 - Flag anything you had to assume or guess
+- **Always generate a `docs/prd.md` file** containing the full PRD output. Create the `docs/` directory if it doesn't exist.
 - Suggest what to do next (usually: create a checklist with `/checklist` or the checklist prompt)
