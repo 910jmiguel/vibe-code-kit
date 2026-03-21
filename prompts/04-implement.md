@@ -88,6 +88,7 @@ Proceed directly to implementation. You can still ask questions if something is 
 ### After Each Task
 - Show what was created or changed (file names and key snippets)
 - Note any deviations from the plan and why
+- **Provide testing instructions:** Give me clear, step-by-step instructions to manually verify the task works. Include what to run, what to click, what to look for, and what the expected outcome should be. Example: "Run `npm run dev`, navigate to `/login`, enter a valid email/password, and verify you're redirected to the dashboard."
 - State what's next
 - **Update docs immediately:** If `docs/checklist.md` exists, mark the completed task/item as done (e.g., `- [x]`). If `docs/prd.md` exists and has trackable items or acceptance criteria related to what was just completed, update or annotate it to reflect progress. Don't wait until the end of the session — update after each task so progress is never lost.
 - If step-by-step or cherry-pick: wait for my go-ahead before continuing

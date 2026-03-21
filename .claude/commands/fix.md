@@ -31,6 +31,7 @@ Check if `CLAUDE.md` exists — if so, read it for project context and conventio
 ## Step 4: Verify
 
 - Describe how to verify the fix
+- **Provide testing instructions:** Give the user clear, step-by-step instructions to manually verify the fix works. Include what to run, what to navigate to, what to look for, and what the expected outcome should be. Also describe how to confirm the original bug no longer occurs.
 - Run tests if the project has them
 - Check for related issues — same bug pattern elsewhere?
 - Note if this fix could affect anything else
@@ -53,6 +54,7 @@ If the root cause requires significant changes:
 3. Let the user choose before implementing
 4. Consider whether this should be a separate task in the checklist
 
-## Offer to update docs
+## Update Docs
 
-If `docs/checklist.md` exists, offer to add a note about the fix or update relevant task status.
+- **Update docs immediately:** If `docs/checklist.md` exists, mark the fixed item or add a note about the fix. If `docs/prd.md` exists and has acceptance criteria related to the fix, update it to reflect the current status.
+- **Final doc check:** Verify that `docs/checklist.md` and `docs/prd.md` (if they exist) accurately reflect the fix. Fix any items that were missed.

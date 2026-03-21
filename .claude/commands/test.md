@@ -63,6 +63,9 @@ Walk through each validation item:
 - **Fail** — What's wrong, link to relevant code
 - **Skip** — Can't test now (explain why)
 
+**User verification instructions:**
+For each tested area, provide clear step-by-step instructions so the user can independently verify the results. Include what to run, what to navigate to, what to look for, and what the expected outcome should be. Don't assume the user knows how to trigger or observe the behavior — spell it out.
+
 ## Step 4: Test Report
 
 **Summary**
@@ -83,6 +86,7 @@ For each:
 
 ## Step 5: Update Docs
 
-- Offer to update `docs/checklist.md` with test results
+- **Update docs immediately:** If `docs/checklist.md` exists, mark tested items with their test results (pass/fail). If `docs/prd.md` exists and has acceptance criteria related to what was tested, annotate it to reflect verification status.
 - If failures found, suggest running `/fix` for each issue
 - If all passes, suggest next steps (deploy, review, etc.)
+- **Final doc check:** Verify that `docs/checklist.md` and `docs/prd.md` (if they exist) accurately reflect all test results from this session. Fix any items that were missed.

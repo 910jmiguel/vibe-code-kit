@@ -31,6 +31,7 @@ Once I've described the issue, follow this process:
 
 ### Step 4: Verify
 - Describe how to verify the fix works
+- **Provide testing instructions:** Give me clear, step-by-step instructions to manually verify the fix works. Include what to run, what to navigate to, what to look for, and what the expected outcome should be. Also describe how to confirm the original bug no longer occurs.
 - Check for related issues — if this bug exists, are there similar bugs nearby?
 - Note if this fix could affect anything else
 
@@ -41,6 +42,10 @@ Keep it short:
 - **Fix:** One sentence
 - **Files changed:** List them
 - **Side effects:** Any, or "none expected"
+
+### Step 6: Update Docs
+- **Update docs immediately:** If `docs/checklist.md` exists, mark the fixed item or add a note about the fix. If `docs/prd.md` exists and has acceptance criteria related to the fix, update it to reflect the current status.
+- **Final doc check:** Verify that `docs/checklist.md` and `docs/prd.md` (if they exist) accurately reflect the fix. Fix any items that were missed.
 
 ---
 
