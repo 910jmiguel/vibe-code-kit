@@ -14,6 +14,7 @@
 
 ## 📑 Table of Contents
 
+- [🗺️ What Do You Want to Do?](#️-what-do-you-want-to-do)
 - [🚀 How It Works](#-how-it-works)
 - [🔀 Not Sure Which to Pick?](#-not-sure-which-to-pick)
 - [🔄 The Six Phases](#-the-six-phases)
@@ -22,6 +23,98 @@
 - [📚 Examples](#-examples)
 - [💡 Tips](#-tips)
 - [📄 License](#-license)
+
+---
+
+## 🗺️ What Do You Want to Do?
+
+Pick your scenario — each one tells you exactly which phases to use and in what order.
+
+<table>
+<tr>
+<td width="50%">
+
+### 🏗️ Build a whole project from scratch
+**Use all 6 phases in order:**
+
+```
+📋 Plan  →  📄 PRD  →  ✅ Checklist  →  🔨 Implement  →  🧪 Test
+```
+
+1. Start with **Plan** to define scope and architecture
+2. Run **PRD** to detail features, UI, and requirements
+3. Run **Checklist** to break it into ordered tasks
+4. Run **Implement** to build phase by phase
+5. Run **Test** to validate the build
+6. Use **Fix** whenever something breaks
+
+> Each phase saves a `.md` file to `docs/` — the next phase reads it automatically.
+
+</td>
+<td width="50%">
+
+### ✨ Add a feature to an existing project
+**Start at PRD (feature mode), then build:**
+
+```
+📄 PRD  →  ✅ Checklist  →  🔨 Implement  →  🧪 Test
+```
+
+1. Run **PRD** and select "Feature / enhancement" scope
+2. Run **Checklist** to break the feature into tasks
+3. Run **Implement** to build it
+4. Run **Test** to verify it works
+
+> The PRD adapts — it asks feature-specific questions and generates a lighter doc focused on what the feature does, not the whole app.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 🔧 Fix a bug or issue
+**Jump straight to Fix:**
+
+```
+🔧 Fix  →  🧪 Test
+```
+
+1. Run **Fix** (or `/fix the button doesn't work`)
+2. Run **Test** to verify the fix and check for regressions
+
+> No planning needed. Fix diagnoses, patches, and verifies.
+
+</td>
+<td width="50%">
+
+### 📌 Build a small task or component
+**Lightweight PRD, then build:**
+
+```
+📄 PRD  →  🔨 Implement  →  🧪 Test
+```
+
+1. Run **PRD** and select "Small task" scope
+2. Run **Implement** to build it
+3. Run **Test** to verify
+
+> Small task PRDs are minimal — just requirements, edge cases, and definition of done. No heavy planning needed.
+
+</td>
+</tr>
+</table>
+
+### 🔗 How Phases Chain Together
+
+Each phase can trigger earlier phases if you haven't run them yet:
+
+```
+🔨 Implement  ─── "No checklist found. Want me to run Checklist first?" ───▶  ✅ Checklist
+✅ Checklist   ─── "No PRD found. Want me to run PRD first?" ──────────────▶  📄 PRD
+📄 PRD         ─── "No plan found. Want me to run Plan first?" ────────────▶  📋 Plan
+```
+
+> You can start at any phase. If earlier docs are missing, the phase offers to generate them — or you can skip and provide context directly.
 
 ---
 
