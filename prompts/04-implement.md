@@ -89,6 +89,7 @@ Proceed directly to implementation. You can still ask questions if something is 
 - Show what was created or changed (file names and key snippets)
 - Note any deviations from the plan and why
 - State what's next
+- **Update docs immediately:** If `docs/checklist.md` exists, mark the completed task/item as done (e.g., `- [x]`). If `docs/prd.md` exists and has trackable items or acceptance criteria related to what was just completed, update or annotate it to reflect progress. Don't wait until the end of the session — update after each task so progress is never lost.
 - If step-by-step or cherry-pick: wait for my go-ahead before continuing
 
 ### After the Phase/Session
@@ -96,6 +97,7 @@ Proceed directly to implementation. You can still ask questions if something is 
 - List any tasks that weren't completed and why
 - Suggest what to tackle next
 - Recommend running the test prompt/command to validate the work
+- **Final doc check:** Verify that `docs/checklist.md` and `docs/prd.md` (if they exist) accurately reflect all completed work from this session. Fix any items that were missed.
 
 ---
 

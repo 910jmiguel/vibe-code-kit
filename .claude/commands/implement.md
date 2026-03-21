@@ -95,13 +95,14 @@ For each selected task or phase, conduct a focused interview:
 - Show what was created/changed (file names, key snippets)
 - Note any deviations from the plan
 - State what's next
+- **Update docs immediately:** If `docs/checklist.md` exists, mark the completed task/item as done (e.g., `- [x]`). If `docs/prd.md` exists and has trackable items or acceptance criteria related to what was just completed, update or annotate it to reflect progress. Don't wait until the end of the session — update after each task so progress is never lost.
 - In step-by-step mode: wait for go-ahead
 
 ### After the Session
 - Summarize what was built
 - List incomplete tasks (if any) and why
 - Suggest next step (usually `/test` to validate)
-- Offer to update `docs/checklist.md` with completed items
+- **Final doc check:** Verify that `docs/checklist.md` and `docs/prd.md` (if they exist) accurately reflect all completed work from this session. Fix any items that were missed.
 
 ## Error Handling
 If something breaks:
