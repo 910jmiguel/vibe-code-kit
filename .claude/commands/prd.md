@@ -1,6 +1,6 @@
 # PRD Phase
 
-You're helping the user create a Product Requirements Document.
+You're helping the user create a Product Requirements Document — the most important document before building. This defines WHAT to build, WHO it's for, and WHY it matters.
 
 ## Step 1: Gather Context
 
@@ -24,53 +24,245 @@ Check if `CLAUDE.md` exists in the project root.
 
 **If `$ARGUMENTS` is provided**, use it as the PRD scope. Reference the plan if one exists in `docs/plan.md`.
 
-## Step 2: Generate the PRD
+## Step 2: Determine Scope & Experience Level
 
-### 1. Overview
-- **Project Name**
-- **One-liner:** What it does
-- **Target Users:** Who and why
-- **Success Criteria:** Measurable outcomes
+Ask two questions:
 
-### 2. Problem Statement
-What problem is being solved? What's the current alternative?
+**Scope:** "What's the scope of this PRD?
+- **Full project** — Building a new app/product from scratch
+- **Feature / enhancement** — Adding something to an existing project
+- **Small task** — A focused change, component, or minor addition"
 
-### 3. Features & Requirements
-For each feature:
-- **Feature Name**
-- **User Story:** As a [user], I want [action] so that [benefit]
-- **Requirements:** Numbered, specific, testable
-- **Acceptance Criteria:** How to verify it works
-- **Priority:** Must-have / Should-have / Nice-to-have
-- **Notes:** Edge cases, constraints, open questions
+**Experience:** "What's your experience level?
+- **A) Vibe-coder** — Great ideas, limited coding experience, using AI to build
+- **B) Developer** — Experienced programmer
+- **C) Somewhere in between** — Some coding knowledge, still learning"
 
-Group by feature area where it makes sense.
+If `$ARGUMENTS` or CLAUDE.md clearly indicate the scope (e.g., "add dark mode" is a feature, "build a SaaS app" is a full project), infer it and confirm rather than asking.
 
-### 4. Technical Requirements
-- Performance targets
-- Security requirements
-- Compatibility needs
-- Third-party integrations
-- Data storage and privacy
+## Step 3: Adaptive Q&A
 
-### 5. UI/UX Requirements
-- Key screens/views (described, not designed)
-- Navigation flow
-- Responsive requirements
-- Accessibility considerations
+Based on **both scope and experience level**, gather all required context. Do NOT generate the PRD until all essential answers are collected.
 
-### 6. Out of Scope
-What we're explicitly NOT building in this version.
+### Full Project Questions
 
-### 7. Open Questions
-Unresolved decisions, tagged with who needs to answer.
+#### Path A — Vibe-Coder:
+1. Product name (brainstorm if undecided)
+2. One-sentence problem statement
+3. Launch goal (100 users, $1K MRR, learning, etc.)
+4. Target users — who they are, what frustrates them, tech-savviness
+5. User journey as a story: "[Name] has problem... discovers app... does X... happy because Y"
+6. 3-5 MUST-have launch features (essentials only)
+7. Features explicitly saved for v2
+8. 1-2 success metrics
+9. Visual vibe in 3-5 words
+10. Constraints — budget, deadline, performance, security, platform needs
 
-### 8. Timeline & Phases
-Map features to implementation phases.
+#### Path B — Developer:
+1. Product name and one-liner
+2. Target audience — personas, demographics, jobs to be done
+3. 3-5 user stories in standard format
+4. MoSCoW prioritized feature list
+5. Success metrics with specific targets (activation, engagement, retention, revenue)
+6. Non-functional requirements — performance, accessibility, platform support, security, scalability
+7. Risk assessment — technical, market, execution
+8. Business model and constraints — monetization, budget, timeline, compliance
 
-## Step 3: Review & Save
+#### Path C — In-Between:
+1. Product name and problem statement
+2. Users — who they are, their problem, current solution, why they'd switch
+3. Main user flow walkthrough
+4. 3-5 v1 features with name, description, and why essential
+5. What's NOT in v1 and why
+6. Success metrics at 1 month and 3 months
+7. Design direction — visual style, key screens, responsive
+8. Constraints — budget, timeline, performance, security, scalability
 
-- Flag anything you assumed or guessed
-- Ask the user to review each section
-- **Always generate a `docs/prd.md` file** containing the full PRD output. Create the `docs/` directory if it doesn't exist. Do not ask whether to save — always save it.
-- Confirm the file was saved and suggest next step: "Run `/checklist` to break this into tasks"
+### Feature / Enhancement Questions (All Experience Levels):
+1. Feature name and one-liner description
+2. What problem does this solve for existing users? Current workaround?
+3. Who specifically benefits? (Could be a subset of users)
+4. User flow — how someone discovers, uses, and gets value from this feature
+5. Specific requirements — everything it must do
+6. UI — key screens, components, or interactions
+7. Edge cases and error states to handle
+8. How it interacts with existing features — dependencies or conflicts
+9. Success metric — how you'll know it's working
+
+### Small Task Questions (All Experience Levels):
+1. What are you building/changing? Be specific.
+2. What should it do? List the requirements.
+3. Does it have a UI component? If so, describe it.
+4. Any edge cases to handle?
+5. How will you verify it works?
+
+## Step 4: Verification Echo (Required)
+
+After ALL questions are answered, summarize back before generating. Adapt the echo to scope:
+
+**Full Project:**
+> **Product:** [Name] — [One-line description]
+> **Target User:** [Primary persona]
+> **Problem:** [Core problem]
+> **Must-Have Features:** [Numbered list]
+> **Success Metric:** [Primary metric and target]
+> **Timeline:** [Launch target]
+> **Constraints:** [Key constraints]
+
+**Feature / Enhancement:**
+> **Feature:** [Name] — [One-line description]
+> **Problem it solves:** [What's broken or missing today]
+> **Who benefits:** [Which users]
+> **Requirements:** [Numbered list]
+> **Depends on:** [Existing features/systems it touches]
+
+**Small Task:**
+> **Task:** [Name] — [What it does]
+> **Requirements:** [Numbered list]
+> **Has UI:** [Yes/No — brief description if yes]
+
+Ask: **"Is this accurate? Should I adjust anything before creating the PRD?"**
+
+Wait for confirmation. If the user corrects anything, update understanding before proceeding.
+
+## Step 5: Generate the PRD
+
+Generate a complete `.md` document adapting to **both scope and experience level** (conversational for A, technical for B, balanced for C).
+
+### Full Project → Use all 11 sections:
+```
+# Product Requirements Document: [App Name] MVP
+
+## 1. Product Overview
+- App name, tagline, launch goal, target launch date, document status
+
+## 2. Problem Statement
+- What problem, why it matters, why now
+- Table: Current solutions vs. their pain points vs. our advantage
+
+## 3. Target Users
+- Primary persona (who, goal, frustration, current workaround)
+- User journey story (narrative format)
+- User journey map table (stage, action, touchpoint, emotion, opportunity)
+
+## 4. Features & Requirements
+- Must Have (P0) — each with: description, user story, numbered requirements,
+  acceptance criteria checkboxes, edge cases, priority
+- Should Have (P1) — table format with planned timeline
+- Won't Have — table with reason and revisit trigger
+
+## 5. UI/UX Requirements
+- Design direction (visual style words, design principles)
+- Key screens with ASCII wireframes showing layout
+- Navigation flow diagram
+- UI quality standards: responsive breakpoints, loading/empty/error states,
+  animations, typography, spacing, color contrast, touch targets, dark mode
+
+## 6. Technical Requirements
+- Performance targets table (page load, API response, TTI, Core Web Vitals)
+- Security & privacy requirements
+- Browser/device compatibility
+- Third-party integrations table
+
+## 7. Success Metrics
+- North star metric
+- Detailed metrics table (acquisition, activation, engagement, retention, revenue)
+
+## 8. Constraints & Risks
+- Constraints table (budget, timeline, team, technical)
+- Risk assessment table (risk, probability, impact, mitigation)
+- Assumptions and open questions
+
+## 9. Quality Standards
+- What this project will NOT accept (placeholder content, half-working features,
+  broken mobile, skipped accessibility, swallowed errors, console warnings)
+- Code quality rules (strict types, error handling, no dead code)
+- Design quality rules (design tokens, interaction states, async states, alt text)
+
+## 10. Definition of Done
+- Feature checklist (P0 complete, acceptance criteria met, edge cases handled)
+- Quality checklist (mobile/desktop, cross-browser, no critical bugs, error states,
+  loading states, empty states)
+- Performance checklist (load time, no layout shifts, optimized images)
+- Accessibility checklist (keyboard nav, screen reader, color contrast)
+- Launch ready checklist (analytics, SEO, privacy policy, deployment, beta tested)
+
+## 11. Timeline & Phases
+- Table mapping phases to features, deliverables, and estimates
+
+## Next Steps
+- Review PRD → Create checklist → Start building
+```
+
+### Feature / Enhancement → Lighter structure:
+```
+# Feature PRD: [Feature Name]
+
+## Overview — feature name, parent project, one-liner, status, date
+## Problem & Context — what problem, current workaround, who benefits, why now
+## User Flow — step-by-step: entry point → core interaction → result → edge cases
+## Requirements — must-have table (requirement + acceptance criteria), nice-to-have, out of scope
+## UI/UX — design direction, key screens with ASCII wireframes + states, where it lives in nav
+## Technical Considerations — files/systems it touches, dependencies, performance, security
+## Quality Standards — matches project style, all states handled, responsive, accessible, no regressions
+## Success Metric — how to know it works
+## Definition of Done — requirements met, tested, reviewed, no regressions
+```
+
+### Small Task → Minimal structure:
+```
+# Task PRD: [Task Name]
+
+## What — task name, parent project, date
+## Why — one paragraph on what problem this solves
+## Requirements — numbered table with done checkboxes
+## UI (if applicable) — simple layout sketch + states
+## Edge Cases — what happens when X/Y
+## Definition of Done — requirements met, tested, no regressions
+```
+
+## Step 6: Self-Verification
+
+After generating, verify the PRD against the appropriate checklist:
+
+### Full Project:
+| Required Section | Present? |
+|:--|:--|
+| Core problem clearly defined | ✅ / ❌ |
+| Target user well described | ✅ / ❌ |
+| 3-5 must-have features with user stories | ✅ / ❌ |
+| Each feature has acceptance criteria | ✅ / ❌ |
+| UI/UX direction with wireframes | ✅ / ❌ |
+| Success metrics defined | ✅ / ❌ |
+| Quality standards included | ✅ / ❌ |
+| Definition of done included | ✅ / ❌ |
+| Out-of-scope features listed | ✅ / ❌ |
+| Constraints acknowledged | ✅ / ❌ |
+
+### Feature / Enhancement:
+| Required Section | Present? |
+|:--|:--|
+| Problem and context explained | ✅ / ❌ |
+| User flow described | ✅ / ❌ |
+| Requirements with acceptance criteria | ✅ / ❌ |
+| UI/UX with states (loading, error, empty) | ✅ / ❌ |
+| Technical considerations listed | ✅ / ❌ |
+| Quality standards included | ✅ / ❌ |
+| Definition of done included | ✅ / ❌ |
+
+### Small Task:
+| Required Section | Present? |
+|:--|:--|
+| Requirements listed | ✅ / ❌ |
+| Edge cases identified | ✅ / ❌ |
+| UI described (if applicable) | ✅ / ❌ |
+| Definition of done included | ✅ / ❌ |
+
+If any items are missing, add them before saving.
+
+## Step 7: Save & Next
+
+- **Always generate a `docs/prd.md` file** containing the full PRD. Create the `docs/` directory if it doesn't exist. Do not ask whether to save — always save it.
+- Flag anything that was assumed or guessed
+- Ask the user to review
+- Confirm the file was saved and suggest next step: "Run `/checklist` to break this PRD into actionable tasks"
