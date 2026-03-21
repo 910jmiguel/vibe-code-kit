@@ -31,10 +31,16 @@ Check if `CLAUDE.md` exists in the project root.
 
 ## Step 2: Determine Mode
 
+Ask the user which mode they want to work in:
+
 **Step-by-step (default):**
 - Work through one task at a time
 - Show the result after each task
 - Wait for confirmation before continuing
+
+**Cherry-pick:**
+- Let the user choose specific items from their PRD or checklist
+- Great for tackling things in their own order or doing a few items per session
 
 **Full build:**
 - Complete all tasks in the current phase or scope
@@ -44,6 +50,33 @@ Check if `CLAUDE.md` exists in the project root.
 - Show what you would do for each task
 - Don't write any code
 - Let the user approve or modify the plan
+
+## Step 2.5: Plan & Discuss Before Building (Recommended)
+
+**When the user chooses cherry-pick, step-by-step, or is working phase by phase**, ask:
+
+> "Before we start coding, would you like to **plan and discuss** first? I'll walk through the selected tasks like a brief interview — asking clarifying questions about requirements, edge cases, dependencies, and design decisions. This produces a sharper plan and higher-quality code. (Recommended, but you can skip if you're ready to build.)"
+
+**If the user says yes (Plan & Discuss mode):**
+
+For each selected task or phase, conduct a focused interview:
+
+1. **Clarify requirements** — Ask targeted questions about what the task should do, what inputs/outputs are expected, and what "done" looks like. Don't ask obvious questions — focus on ambiguities and decisions that affect implementation.
+2. **Surface edge cases** — What should happen with empty data? Errors? Concurrent access? Permissions? Ask about the cases the user might not have considered.
+3. **Identify dependencies** — Does this task depend on other tasks? Does it touch shared state, APIs, or components that other tasks also modify? Flag potential conflicts.
+4. **Confirm design decisions** — If there are multiple valid approaches (e.g., client-side vs. server-side, new component vs. extend existing), present the options briefly and let the user decide.
+5. **Produce a mini-plan** — After the discussion, summarize:
+   - What will be built (scope)
+   - Key decisions made
+   - Edge cases to handle
+   - Implementation approach
+   - Any risks or open questions
+6. **Get approval** — Ask the user to confirm the plan before writing code. They can adjust, add, or remove items.
+
+**If the user says no (skip):**
+- Proceed directly to implementation. You can still ask questions if something is genuinely ambiguous, but don't run the full interview.
+
+> **Why this matters:** A 2-minute discussion before coding prevents 20 minutes of rework. This is especially valuable for complex tasks, tasks with unclear requirements, or when working on unfamiliar parts of the codebase.
 
 ## Step 3: Implement
 

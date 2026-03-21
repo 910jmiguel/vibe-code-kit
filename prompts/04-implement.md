@@ -29,14 +29,45 @@ If the user chose **cherry-pick**:
 2. **Present a numbered list** of all implementable items (features, tasks, endpoints, components, etc.) pulled from those docs. Group them by section/phase if the source doc has structure.
 3. **Ask:** "Which items do you want to tackle this session? (Pick by number, or describe what you want.)"
 4. **Wait for their selection.** Don't start coding until they confirm.
-5. Once selected, implement each picked item using the same rules as step-by-step mode (one at a time, check in after each).
-6. After completing all picked items, show:
+5. **Before coding, offer the Plan & Discuss step** (see below).
+6. Once selected (and optionally discussed), implement each picked item using the same rules as step-by-step mode (one at a time, check in after each).
+7. After completing all picked items, show:
    - What was completed
    - What remains on the full list
    - Suggest logical next picks for the following session
-7. **Update the checklist** (`docs/checklist.md`) — mark completed items as done so progress carries across sessions.
+8. **Update the checklist** (`docs/checklist.md`) — mark completed items as done so progress carries across sessions.
 
 > **Tip:** Cherry-pick mode is ideal when you want to work in short sessions, prioritize the most important items first, or skip around the plan based on what's ready.
+
+---
+
+## Plan & Discuss Before Building (Recommended)
+
+**When the user chooses cherry-pick, step-by-step, or is working phase by phase**, ask before writing any code:
+
+> "Before we start coding, would you like to **plan and discuss** first? I'll walk through the selected tasks like a brief interview — asking clarifying questions about requirements, edge cases, dependencies, and design decisions. This produces a sharper plan and higher-quality code. **(Recommended)**, but you can skip if you're ready to build."
+
+### If the user says yes (Plan & Discuss mode):
+
+For each selected task, subphase, or phase, conduct a focused interview:
+
+1. **Clarify requirements** — Ask targeted questions about what the task should do, what inputs/outputs are expected, and what "done" looks like. Don't ask obvious questions — focus on ambiguities and decisions that affect implementation.
+2. **Surface edge cases** — What should happen with empty data? Errors? Concurrent access? Permissions? Ask about the cases the user might not have considered.
+3. **Identify dependencies** — Does this task depend on other tasks? Does it touch shared state, APIs, or components that other tasks also modify? Flag potential conflicts.
+4. **Confirm design decisions** — If there are multiple valid approaches (e.g., client-side vs. server-side, new component vs. extend existing), present the options briefly and let the user decide.
+5. **Produce a mini-plan** — After the discussion, summarize:
+   - What will be built (scope)
+   - Key decisions made
+   - Edge cases to handle
+   - Implementation approach
+   - Any risks or open questions
+6. **Get approval** — Ask the user to confirm the plan before writing code. They can adjust, add, or remove items.
+
+### If the user says no (skip):
+
+Proceed directly to implementation. You can still ask questions if something is genuinely ambiguous, but don't run the full interview.
+
+> **Why this matters:** A 2-minute discussion before coding prevents 20 minutes of rework. This is especially valuable for complex tasks, tasks with unclear requirements, or when working on unfamiliar parts of the codebase.
 
 ---
 
