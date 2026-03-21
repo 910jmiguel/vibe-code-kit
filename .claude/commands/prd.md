@@ -4,21 +4,29 @@ You're helping the user create a Product Requirements Document — the most impo
 
 ## Step 1: Gather Context
 
-Check if `CLAUDE.md` exists in the project root.
+Detect existing project context before asking questions:
 
-**If CLAUDE.md exists:**
-- Read it for project context, tech stack, and conventions
+1. **Check for project files:** `CLAUDE.md`, `README.md`, `package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, `Gemfile`, `composer.json`, or similar config files
+2. **Scan the project structure:** top-level directories, key source files
+3. **Identify the tech stack** from dependencies, file extensions, and config files
+4. **Check for existing docs:** `docs/plan.md`, `docs/prd.md`
+
+**If an existing project is detected (code, config, or CLAUDE.md exists):**
+- State what you found: project name, tech stack, structure, and current state
+- Skip questions you can already answer from the codebase (e.g., don't ask "what tech stack?" if you can see it in config files)
 - Check if `docs/plan.md` exists — if so, read it and use it as the foundation for the PRD
 - If `docs/plan.md` does NOT exist, ask: "No plan found. Want me to run the Plan phase first to generate `docs/plan.md`? (Optional — I can write the PRD without it if you already know the scope.)"
 - If plan exists or user declines, ask: "What should this PRD cover? $ARGUMENTS"
 
-**If CLAUDE.md does not exist:**
+**If this is a new/empty project (no meaningful code or config):**
 - Ask:
   1. What's the project? One-liner description.
   2. What's the tech stack?
   3. Do you have an existing plan or notes? Paste key points if so.
   4. Optional: Want me to run the Plan phase first?
 - Wait for answers.
+
+**If the user provides partial context** (e.g., mentions a feature but not the stack), fill in what you can detect from the codebase and only ask about what's genuinely unknown.
 
 **If the user wants the Plan phase first**, run the full Plan workflow (Step 1–4 from `/plan`), save `docs/plan.md`, then continue with the PRD using that plan as the foundation.
 

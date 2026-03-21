@@ -6,19 +6,38 @@ You're helping me write a Product Requirements Document. This defines WHAT we're
 
 ## Before We Start
 
-**Answer these questions first:**
+### Detect Existing Context
+
+Before asking questions, **scan the current project directory** for signals:
+
+- Check if `CLAUDE.md`, `README.md`, `package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, `Gemfile`, `composer.json`, or similar config files exist
+- Check if `docs/plan.md` exists — if so, read it and use it as the foundation
+- Scan the project structure (top-level directories and key files)
+- Identify the tech stack from dependencies, file extensions, and config files
+
+**If an existing project is detected:**
+- State what you found: project name, tech stack, and current state
+- Skip questions you can already answer from the codebase (e.g., don't ask "what tech stack?" if you can see a `package.json` with Next.js)
+- Still ask the questions you can't infer: scope, experience level, and what specifically to cover in the PRD
+
+**If this is a new/empty project:**
+- Ask the full set of questions below
+
+**If the user provides partial context** (e.g., mentions a feature but not the stack), fill in what you can detect from the codebase and only ask about what's genuinely unknown.
+
+### Questions (skip any you can answer from the codebase)
 
 1. What are you building? One-liner description.
 2. What's the scope?
    - **Full project** — Building a new app/product from scratch
    - **Feature / enhancement** — Adding something to an existing project
    - **Small task** — A focused change, component, or minor addition
-3. What's the tech stack? (Language, framework, database, hosting)
+3. What's the tech stack? (Language, framework, database, hosting) *(Skip if detectable from codebase)*
 4. What's your experience level?
    - **A) Vibe-coder** — Great ideas, limited coding experience, using AI to build
    - **B) Developer** — Experienced programmer
    - **C) Somewhere in between** — Some coding knowledge, still learning
-5. Do you have an existing plan or notes? If so, paste them here. If not, just describe what you want to build.
+5. Do you have an existing plan or notes? If so, paste them here. If not, just describe what you want to build. *(Skip if `docs/plan.md` exists)*
 6. **Optional:** If you don't have a plan yet, I can run the **Plan phase** first to generate one before writing the PRD. Want me to do that? (If you already know what you're building, skip this.)
 
 **Wait for my answers before continuing.**

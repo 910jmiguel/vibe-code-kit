@@ -4,21 +4,26 @@ You're helping the user plan a software project or feature.
 
 ## Step 1: Gather Context
 
-Check if `CLAUDE.md` exists in the project root.
+Detect existing project context before asking questions:
 
-**If CLAUDE.md exists:**
-- Read it to understand the project, tech stack, and conventions
-- Scan the project structure to understand what exists
-- Skip basic onboarding questions — you already have context
+1. **Check for project files:** `CLAUDE.md`, `README.md`, `package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, `Gemfile`, `composer.json`, or similar config files
+2. **Scan the project structure:** top-level directories, key source files, existing docs (`docs/plan.md`, `docs/prd.md`)
+3. **Identify the tech stack** from dependencies, file extensions, and config files
+
+**If an existing project is detected (code, config, or CLAUDE.md exists):**
+- State what you found: project name, tech stack, structure, and current state
+- Skip questions you can already answer from the codebase
 - Ask only: "What are you planning? (new feature, new project, refactor, etc.) $ARGUMENTS"
 
-**If CLAUDE.md does not exist:**
+**If this is a new/empty project (no meaningful code or config):**
 - Ask these onboarding questions:
   1. What's the project? One-liner and who it's for.
   2. What tech stack? Language, framework, database.
   3. What's the goal for this session?
   4. Any constraints? (integrations, deadlines, team size, existing code)
 - Wait for answers before proceeding.
+
+**If the user provides partial context** (e.g., mentions a feature but not the stack), fill in what you can detect from the codebase and only ask about what's genuinely unknown.
 
 **If `$ARGUMENTS` is provided**, use it as the planning target. You may still ask 1-2 clarifying questions if the scope is ambiguous, but don't repeat what the arguments already tell you.
 

@@ -1,13 +1,29 @@
 # Plan Phase
 
-You're helping me plan a software project. Before we start, I need you to understand my context.
+You're helping me plan a software project. Before we start, understand my context.
 
-**Answer these questions first:**
+## Detect Existing Context
 
-1. What's the project? Give me a one-liner description and who it's for.
-2. What tech stack are you using (or considering)? Language, framework, database, etc.
-3. What's your goal for this session? (e.g., plan the whole thing, plan a specific feature, figure out architecture)
-4. Any constraints I should know about? (e.g., must integrate with X, deadline, team size, existing codebase)
+Before asking questions, **scan the current project directory** for signals:
+
+- Check if `CLAUDE.md`, `README.md`, `package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, `Gemfile`, `composer.json`, or similar config files exist
+- Scan the project structure (top-level directories and key files)
+- Identify the tech stack from dependencies, file extensions, and config files
+- Read any existing docs (`docs/plan.md`, `docs/prd.md`) for prior context
+
+**If an existing project is detected:**
+- State what you found: project name, tech stack, structure, and current state
+- Skip questions you can already answer from the codebase
+- Ask only: "What are you planning? (new feature, refactor, new direction, etc.)" and any remaining unknowns
+
+**If this is a new/empty project (no meaningful code or config):**
+- Ask these onboarding questions:
+  1. What's the project? Give me a one-liner description and who it's for.
+  2. What tech stack are you using (or considering)? Language, framework, database, etc.
+  3. What's your goal for this session? (e.g., plan the whole thing, plan a specific feature, figure out architecture)
+  4. Any constraints I should know about? (e.g., must integrate with X, deadline, team size, existing codebase)
+
+**If the user provides partial context** (e.g., mentions a feature but not the stack), fill in what you can detect from the codebase and only ask about what's genuinely unknown.
 
 **Wait for my answers before continuing.**
 
